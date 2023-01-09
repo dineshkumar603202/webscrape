@@ -1,0 +1,56 @@
+<!doctypehtml>
+{% load static %}
+<html>
+    <head>
+        <title>Web Scraping</title>
+        <script>
+        </script>
+    </head>
+    <body>
+        <h1>Web Scraping</h1>
+        <h3>Try with this url : https://www.flipkart.com/srpm-wayfarer-sunglasses/p/itmaf19ae5820c06</h3>
+        <h3>Createsuperuser and kindly ref admin page to db datas</h3>
+        <h2>Kindly install - pip install request,beautifulsoup4</h3>
+        <br>
+
+        <h3>Enter Url:</h3>
+        <form method='POST' action='.'>
+            {% csrf_token %}
+            <p>
+                <label>{{form.url.label}}</label>{{form.url}}
+            </p>
+            <button type='submit'>Submit</button>
+        </form>
+        <br>
+        <br>
+        <br>
+        <br>
+        <div>
+            {% if data %}
+            <h3 align='center'>Datas in Database:</h3>
+            <table border='1'>
+                <tr>
+                    <td>URL</td>
+                    <td>Price</td>
+                    <td>Mobile Number</td>
+                    <td>size</td>
+                    <td>Title</td>
+                    <td>Description</td>
+                <tr>
+                {% for d in data %}
+                <tr>
+                    <th>{{d.url}}</th>
+                    <th>{{d.price}}</th>
+                    <th>{{d.mobile_number}}</th>
+                    <th>{{d.size}}</th>
+                    <th>{{d.title}}</th>
+                    <th>{{d.description}}</th>
+                </tr>
+                {% endfor %}
+            </table>
+            {% endif %}
+            
+            
+        <div>
+    </body>
+<html>
